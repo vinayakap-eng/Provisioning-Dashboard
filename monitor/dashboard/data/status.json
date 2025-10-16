@@ -6,7 +6,7 @@
     "valid_from": "2025-07-14 08:55:08+00:00",
     "valid_to": "2035-07-12 08:55:08+00:00",
     "mtls_status": true,
-    "latency": 6.553173065185547,
+    "latency": 23.00119400024414,
     "mitm_status": true,
     "revoked": false
   },
@@ -17,7 +17,7 @@
     "valid_from": "2025-08-05 04:22:07+00:00",
     "valid_to": "2035-08-03 04:22:07+00:00",
     "mtls_status": true,
-    "latency": 5.99980354309082,
+    "latency": 22.99952507019043,
     "mitm_status": true,
     "revoked": false
   },
@@ -39,7 +39,7 @@
     "valid_from": "2025-07-14 11:43:35+00:00",
     "valid_to": "2035-07-12 11:43:35+00:00",
     "mtls_status": true,
-    "latency": 5.3653717041015625,
+    "latency": 8.008480072021484,
     "mitm_status": true,
     "revoked": false
   },
@@ -50,7 +50,7 @@
     "valid_from": "2025-07-15 07:07:32+00:00",
     "valid_to": "2035-07-13 07:07:32+00:00",
     "mtls_status": true,
-    "latency": 5.229473114013672,
+    "latency": 24.00064468383789,
     "mitm_status": true,
     "revoked": false
   },
@@ -61,7 +61,7 @@
     "valid_from": "2025-07-15 10:41:31+00:00",
     "valid_to": "2035-07-13 10:41:31+00:00",
     "mtls_status": true,
-    "latency": 7.996320724487305,
+    "latency": 18.999814987182617,
     "mitm_status": true,
     "revoked": false
   },
@@ -72,7 +72,7 @@
     "valid_from": "2025-07-16 05:52:33+00:00",
     "valid_to": "2035-07-14 05:52:33+00:00",
     "mtls_status": true,
-    "latency": 21.360397338867188,
+    "latency": 23.000240325927734,
     "mitm_status": true,
     "revoked": false
   },
@@ -86,5 +86,16 @@
     "latency": 0,
     "mitm_status": true,
     "revoked": true
+  },
+  "192.168.1.114": {
+    "certificate_status": true,
+    "key_status": true,
+    "mtls_status": true,
+    "mitm_status": true,
+    "revoked": false,
+    "cn": "device001",
+    "valid_from": "2025-09-20T09:12:21",
+    "valid_to": "2026-09-20T09:12:21",
+    "latency": 2.0
   }
 }

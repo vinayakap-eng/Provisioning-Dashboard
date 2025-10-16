@@ -3,11 +3,13 @@ import json
 import subprocess
 import platform
 import re
+import io, unittest, json
 from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from cryptography import x509
 from cryptography.hazmat.backends import default_backend
+from .tests_runner import run_all_tests
 
 from .scanner import scan_network, check_mtls
 
@@ -236,3 +238,26 @@ def provisioning_request_view(request):
             return JsonResponse({"error": str(e)}, status=500)
 
     return JsonResponse({"error": "Invalid request"}, status=400)
+def run_testcases(request):
+    """
+    Discover and run all testcases under multi_devices/testcases
+    """
+    loader = unittest.TestLoader()
+    suite = loader.discover('multi_devices/testcases')
+
+    stream = io.StringIO()
+    runner = unittest.TextTestRunner(stream=stream, verbosity=2)
+    result = runner.run(suite)
+
+    response = {
+        "total": result.testsRun,
+        "failures": len(result.failures),
+        "errors": len(result.errors),
+        "passed": result.testsRun - len(result.failures) - len(result.errors),
+        "output": stream.getvalue(),
+    }
+    return JsonResponse(response)
+def run_tests_view(request):
+    """Endpoint to run all testcases"""
+    data = run_all_tests()
+    return JsonResponse(data)

@@ -21,6 +21,7 @@ from multi_devices.views import (
     testcases_view,
     scan_devices_view,
     provisioning_request_view,
+    run_tests_view,  # ✅ add this
 )
 
 urlpatterns = [
@@ -29,4 +30,5 @@ urlpatterns = [
     path('provisioning/tests/', testcases_view, name='testcases'),
     path('provisioning/scan/', scan_devices_view, name='scan_devices'),
     path('provisioning/request/', provisioning_request_view, name='provisioning_request'),
+    path('run-tests/', run_tests_view, name='run_tests'),  # ✅ fixed here
 ]

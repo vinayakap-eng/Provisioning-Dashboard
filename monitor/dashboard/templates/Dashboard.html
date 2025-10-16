@@ -159,12 +159,13 @@
         </div>
     </div>
 
-    <!-- TESTCASES BUTTON -->
-    <div class="text-center mt-5">
-        <a href="{% url 'testcases' %}" class="btn btn-lg btn-primary px-5">
-            📋 View Testcases
-        </a>
+    <!-- TEST CASES RUNNER -->
+    <h3 class="mb-3 fw-bold mt-5">Test Suites</h3>
+    <div class="card p-3 text-center">
+        <button id="run-tests" class="btn btn-success mb-3">📋 Run All Test Cases</button>
+        <div id="test-result" class="text-start"></div>
     </div>
+
 </div>
 
 <!-- MODE TOGGLE -->
@@ -274,24 +275,42 @@
     });
 
     function provisionDevice(ip) {
-    fetch("/provisioning/request/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "X-CSRFToken": getCookie("csrftoken") },
-        body: JSON.stringify({ ip: ip })
-    })
-    .then(res => res.json())
-    .then(data => {
-        if (data.success) {
-            alert("Provisioned " + ip + " successfully!");
-            // ✅ Reload to refresh table + charts with updated JSON
-            location.reload();
-        } else {
-            alert("Provisioning failed: " + data.error);
-        }
+        fetch("/provisioning/request/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", "X-CSRFToken": getCookie("csrftoken") },
+            body: JSON.stringify({ ip: ip })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success) {
+                alert("Provisioned " + ip + " successfully!");
+                // ✅ Reload to refresh table + charts with updated JSON
+                location.reload();
+            } else {
+                alert("Provisioning failed: " + data.error);
+            }
+        });
+    }
+
+    /* ---------- TEST CASES RUNNER ---------- */
+    document.getElementById("run-tests").addEventListener("click", function() {
+        document.getElementById("test-result").innerHTML = "<p>Running test cases...</p>";
+        fetch("/run-tests/")
+            .then(res => res.json())
+            .then(data => {
+                document.getElementById("test-result").innerHTML = `
+                    <h5>Test Results</h5>
+                    <p><strong>Total:</strong> ${data.total}</p>
+                    <p><strong>Passed:</strong> ${data.passed}</p>
+                    <p><strong>Failures:</strong> ${data.failures}</p>
+                    <p><strong>Errors:</strong> ${data.errors}</p>
+                    <pre style="background:#222;color:#fff;padding:10px;border-radius:6px;white-space:pre-wrap">${data.output}</pre>
+                `;
+            })
+            .catch(err => {
+                document.getElementById("test-result").innerHTML = "<p>Error running tests: " + err + "</p>";
+            });
     });
-}
-
-
 
     function getCookie(name) {
         let cookieValue = null;

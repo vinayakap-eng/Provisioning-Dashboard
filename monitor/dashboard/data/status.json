@@ -97,5 +97,49 @@
     "valid_from": "2025-09-20T09:12:21",
     "valid_to": "2026-09-20T09:12:21",
     "latency": 2.0
+  },
+  "raspi-01": {
+    "last_seen": "2026-01-12T07:07:18.447418Z",
+    "status": "online",
+    "sensors": {
+      "cpu": {
+        "temp_celsius": 43.55,
+        "usage_percent": 0.0
+      },
+      "memory": {
+        "used_percent": 7.0,
+        "used_mb": 434,
+        "total_mb": 8063
+      },
+      "disk": {
+        "used_percent": 6.11,
+        "used_gb": 7.12,
+        "total_gb": 116.64
+      },
+      "system": {
+        "uptime": "0d 1h 58m"
+      },
+      "network": {
+        "hostname": "Provisioning",
+        "ips": [
+          "127.0.1.1"
+        ]
+      },
+      "gpio": {
+        "accessible": false
+      }
+    }
+  },
+  "192.168.68.116": {
+    "certificate_status": true,
+    "key_status": true,
+    "mtls_status": true,
+    "mitm_status": true,
+    "revoked": false,
+    "cn": "device-192-168-68-116",
+    "valid_from": "2026-01-30T07:31:32.184058Z",
+    "valid_to": "2027-01-30T07:31:32.184058Z",
+    "latency": "N/A",
+    "provisioned_at": "2026-01-30T07:31:36.088162Z"
   }
 }

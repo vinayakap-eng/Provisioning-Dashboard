@@ -21,14 +21,25 @@ from multi_devices.views import (
     testcases_view,
     scan_devices_view,
     provisioning_request_view,
-    run_tests_view,  # ✅ add this
+    run_tests_view,
+    test_cases_view,
+    run_single_test_view,
+    device_telemetry_view,
+    status_json_view,
+    download_cert_view,
 )
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('dashboard/', dashboard_view, name='dashboard'),
     path('', dashboard_view, name='dashboard'),
     path('provisioning/tests/', testcases_view, name='testcases'),
     path('provisioning/scan/', scan_devices_view, name='scan_devices'),
     path('provisioning/request/', provisioning_request_view, name='provisioning_request'),
-    path('run-tests/', run_tests_view, name='run_tests'),  # ✅ fixed here
+    path('api/device-telemetry/', device_telemetry_view, name='device_telemetry'),
+    path('provisioning/status-json/', status_json_view, name='status_json'),
+    path('provisioning/download-cert/', download_cert_view, name='download_cert'),
+    path('run-tests/', run_tests_view, name='run_tests'),
+    path('test-cases/', test_cases_view, name='test_cases'),
+    path('api/run-test/<str:test_name>/', run_single_test_view, name='run_single_test'),
 ]

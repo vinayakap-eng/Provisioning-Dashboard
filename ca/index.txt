@@ -6,3 +6,4 @@ V	350713104131Z		1005	unknown	/CN=device6
 V	350714055233Z		1006	unknown	/CN=device7
 R	350714060146Z	250802102612Z	1007	unknown	/CN=device8
 V	350803042207Z		1008	unknown	/CN=device10
+V	360110062415Z		1009	unknown	/C=US/O=RaspberryPi/CN=raspi-01

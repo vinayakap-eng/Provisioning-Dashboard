@@ -1,6 +1,6 @@
 Django>=3.2
 requests
-nmap
+python-nmap
 gunicorn
 selenium>=4.8.0
 webdriver-manager>=4.0.0

@@ -43,7 +43,8 @@ jobs:
           python manage.py test --verbosity=2
 
   deploy_heroku:
-    if: startsWith(github.ref, 'refs/heads/main') && github.event_name == 'push'
+    # Deploy on pushes to main OR push-from-local (useful for testing deploys from branch)
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/push-from-local')
     runs-on: ubuntu-latest
     needs: test
     steps:

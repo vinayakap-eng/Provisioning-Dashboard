@@ -1,6 +1,8 @@
 name: CI
 
+# Allow manual runs from the Actions UI in addition to branch pushes
 on:
+  workflow_dispatch: {}
   push:
     branches: [ main, push-from-local ]
   pull_request:
